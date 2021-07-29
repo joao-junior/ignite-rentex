@@ -63,7 +63,7 @@
                 },
                 "responses": {
                     "201":{
-                        "description": "Created"
+                        "description": "Created Categories"
                     }
                 }
             }
