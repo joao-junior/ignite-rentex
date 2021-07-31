@@ -94,6 +94,33 @@
                 }
 
             }
+        },
+        "/users": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create a User",
+                "description": "Create a new User",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/Users"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201":{
+                        "description": "Created"
+                    },
+                    "500":{
+                        "description":"Users already exists"
+                    }
+                }
+
+            }
         }
     },
     "definitions": {
@@ -127,6 +154,30 @@
             "example": {
                 "name": "SUV",
                 "description": "Categoria para carro SUV"
+            }
+        },
+        "Users": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "email":{
+                    "type": "string"
+                },
+                "password":{
+                    "type": "string"
+                },
+                "driver_license":{
+                    "type": "string"
+                }
+
+            },
+            "example": {
+                "name": "João Junior",
+                "email": "joaojunior346@gmail.com",
+                "password": "1234",
+                "driver_license": "123456"
             }
         },
         "CategoriesImport": {

@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\joaoj\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add typeorm
+  C:\Program Files\nodejs\node.exe C:\Users\joaoj\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add bcryptjs
 
 PATH: 
-  C:\Users\joaoj\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\usr\bin;C:\Program Files\ConEmu\ConEmu\Scripts;C:\Program Files\ConEmu;C:\Program Files\ConEmu\ConEmu;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Git\cmd;C:\Users\joaoj\AppData\Local\Microsoft\WindowsApps;C:\Users\joaoj\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\joaoj\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+  C:\Users\joaoj\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\joaoj\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Git\cmd;C:\Users\joaoj\AppData\Local\Microsoft\WindowsApps;C:\Users\joaoj\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\joaoj\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
 
 Yarn version: 
   1.22.10
@@ -20,13 +20,17 @@ npm manifest:
   {
     "name": "node-typescript",
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "server.ts",
     "license": "MIT",
     "scripts": {
       "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
-      "typeorm": "ts-node-dev ./node_modules/typeorm/cli"
+      "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
+      "migration:run": "yarn typeorm migration:run",
+      "migration:create": "yarn typeorm migration:create -n",
+      "migration:revert": "yarn typeorm migration:revert"
     },
     "dependencies": {
+      "@types/node": "^16.4.2",
       "@typescript-eslint/eslint-plugin": "^4.28.4",
       "csv-parse": "^4.15.3",
       "eslint-config-airbnb-base": "^14.2.1",
@@ -38,7 +42,7 @@ npm manifest:
       "reflect-metadata": "^0.1.13",
       "swagger-ui-express": "^4.1.6",
       "tsyringe": "^4.6.0",
-      "typeorm": "^0.2.32",
+      "typeorm": "^0.2.34",
       "uuid": "^8.3.2"
     },
     "devDependencies": {
@@ -215,6 +219,11 @@ Lockfile:
     version "14.14.35"
     resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.35.tgz#42c953a4e2b18ab931f72477e7012172f4ffa313"
     integrity sha512-Lt+wj8NVPx0zUmUwumiVXapmaLUcAk3yPuHCFVXras9k5VT9TdhJqKqGVUQCD60OTMCl0qxJ57OiTL0Mic3Iag==
+  
+  "@types/node@^16.4.2":
+    version "16.4.2"
+    resolved "https://registry.yarnpkg.com/@types/node/-/node-16.4.2.tgz#0a95d7fd950cb1eaca0ce11031d72e8f680b775a"
+    integrity sha512-vxyhOzFCm+jC/T5KugbVsYy1DbQM0h3NCFUrVbu0+pYa/nr+heeucpqxpa8j4pUmIGLPYzboY9zIdOF0niFAjQ==
   
   "@types/qs@*":
     version "6.9.6"
@@ -3293,10 +3302,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
     integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
   
-  typeorm@^0.2.32:
-    version "0.2.32"
-    resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.32.tgz#544dbfdfe0cd0887548d9bcbd28527ea4f4b3c9b"
-    integrity sha512-LOBZKZ9As3f8KRMPCUT2H0JZbZfWfkcUnO3w/1BFAbL/X9+cADTF6bczDGGaKVENJ3P8SaKheKmBgpt5h1x+EQ==
+  typeorm@^0.2.34:
+    version "0.2.34"
+    resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.34.tgz#637b3cec2de54ee7f423012b813a2022c0aacc8b"
+    integrity sha512-FZAeEGGdSGq7uTH3FWRQq67JjKu0mgANsSZ04j3kvDYNgy9KwBl/6RFgMVgiSgjf7Rqd7NrhC2KxVT7I80qf7w==
     dependencies:
       "@sqltools/formatter" "^1.2.2"
       app-root-path "^3.0.0"
