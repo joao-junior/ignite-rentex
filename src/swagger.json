@@ -110,6 +110,52 @@
                 }
             }
         },
+        "/users/avatar": {
+            "patch": {
+                "tags": ["Users"],
+                "summary": "Upload avatar",
+                "description": "Upload avatar",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/definitions/AvatarImport"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "message": "message"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "message": "message"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/categories": {
             "post": {
                 "tags": ["Category"],
@@ -198,24 +244,24 @@
                 "responses": {
                     "201": {
                         "description": "Created Categories"
-                    }
-                },
-                "400": {
-                    "description": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "message": "message"
+                    },
+                    "400": {
+                        "description": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "message": "message"
+                                }
                             }
                         }
-                    }
-                },
-                "500": {
-                    "description": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "message": "message"
+                    },
+                    "500": {
+                        "description": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "message": "message"
+                                }
                             }
                         }
                     }
@@ -315,6 +361,38 @@
                 "password": "1234"
             }
         },
+        "Users": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "driver_license": {
+                    "type": "string"
+                }
+            },
+            "example": {
+                "name": "João Junior",
+                "email": "joaojunior346@gmail.com",
+                "password": "1234",
+                "driver_license": "123456"
+            }
+        },
+        "AvatarImport": {
+            "type": "object",
+            "properties": {
+                "avatar": {
+                    "type": "string",
+                    "format": "binary"
+                }
+            }
+        },
         "Specifications": {
             "type": "object",
             "properties": {
@@ -345,33 +423,10 @@
                 "description": "Categoria para carro SUV"
             }
         },
-        "Users": {
-            "type": "object",
-            "properties": {
-                "name": {
-                    "type": "string"
-                },
-                "email": {
-                    "type": "string"
-                },
-                "password": {
-                    "type": "string"
-                },
-                "driver_license": {
-                    "type": "string"
-                }
-            },
-            "example": {
-                "name": "João Junior",
-                "email": "joaojunior346@gmail.com",
-                "password": "1234",
-                "driver_license": "123456"
-            }
-        },
         "CategoriesImport": {
             "type": "object",
             "properties": {
-                "file": {
+                "category": {
                     "type": "string",
                     "format": "binary"
                 }
